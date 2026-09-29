@@ -1,0 +1,42 @@
+{
+  "version": 3,
+  "permissions": [
+    {
+      "resource": "expenses",
+      "component": "expense-api",
+      "description": "Expenses employees submit and managers decide",
+      "actions": [
+        { "handle": "read", "description": "The caller's own expenses" },
+        { "handle": "submit", "description": "Submit a new expense" },
+        { "handle": "review-team", "description": "The expenses of the caller's reports" },
+        { "handle": "approve", "description": "Approve a report's submitted expense" },
+        { "handle": "reject", "description": "Reject a report's submitted expense" }
+      ]
+    }
+  ],
+  "groups": [
+    { "name": "Employees", "description": "Everyone who can submit expenses" },
+    { "name": "Managers", "description": "People who review and decide their reports' expenses" }
+  ],
+  "roles": [
+    {
+      "name": "Employee",
+      "description": "Submits expenses with a receipt photo and tracks their own status.",
+      "stories": [1, 2, 3, 4, 5],
+      "grants": ["expenses:read", "expenses:submit"],
+      "assignTo": ["Employees"]
+    },
+    {
+      "name": "Manager",
+      "description": "Reviews and decides the expenses of the people who report to them.",
+      "stories": [6, 7, 8],
+      "grants": ["expenses:review-team", "expenses:approve", "expenses:reject"],
+      "assignTo": ["Managers"]
+    }
+  ],
+  "testUsers": [
+    { "username": "test-employee", "roles": ["Employee"] },
+    { "username": "test-employee-2", "roles": ["Employee"] },
+    { "username": "test-manager", "roles": ["Employee", "Manager"] }
+  ]
+}

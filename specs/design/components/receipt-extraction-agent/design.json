@@ -1,0 +1,17 @@
+{
+  "name": "receipt-extraction-agent",
+  "type": "ai-agent",
+  "version": "0.1.0",
+  "language": "TypeScript",
+  "buildpack": "docker",
+  "appPath": "receipt-extraction-agent",
+  "entrypoint": "deployment/ai-agent",
+  "exposure": "internet",
+  "dependencies": [
+    { "kind": "platform-resource", "name": "memory-db", "resourceType": "postgres-cnpg" },
+    { "kind": "platform-resource", "name": "user-auth", "resourceType": "thunder-app" }
+  ],
+  "description": "Reads a photo of a receipt and returns the vendor, date, amount and category it can make out, for the employee to review and correct before submitting the expense. Holds no expense data itself — expense-api is where a submitted expense lives — and never decides or stores anything beyond its own short conversation record.",
+  "stories": [2],
+  "skillsPinned": ["agent-building"]
+}

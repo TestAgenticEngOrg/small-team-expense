@@ -1,0 +1,18 @@
+{
+  "name": "expense-webapp",
+  "type": "web-application",
+  "version": "0.1.0",
+  "language": "TypeScript",
+  "buildpack": "docker",
+  "appPath": "expense-webapp",
+  "entrypoint": "deployment/web-application",
+  "exposure": "internet",
+  "dependencies": [
+    { "kind": "component", "name": "expense-api", "description": "Submits and lists expenses, and carries manager decisions." },
+    { "kind": "component", "name": "receipt-extraction-agent", "description": "Extracts vendor/date/amount/category from an uploaded receipt photo before submission." },
+    { "kind": "platform-resource", "name": "user-auth", "resourceType": "thunder-app" }
+  ],
+  "description": "The single-page app both Employees and Managers use: an employee uploads a receipt, reviews the agent's extracted fields, and submits the expense and tracks its status; a manager reviews and decides the expenses of the people who report to them. Holds no business logic of its own — every read and write goes through expense-api or the extraction agent.",
+  "stories": [1, 2, 3, 4, 5, 6, 7, 8],
+  "skillsPinned": ["wireframes", "react-webapp", "oxygen-ui-design-system", "thunder-authentication"]
+}

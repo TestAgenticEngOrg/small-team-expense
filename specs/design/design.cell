@@ -1,0 +1,23 @@
+title small-team-expense
+
+component expense-webapp as "Expense Webapp" web-application
+component expense-api as "Expense API" service
+component receipt-extraction-agent as "Receipt Extraction Agent" ai-agent
+component expense-db as "Expense DB" database
+component memory-db as "Agent Memory DB" database
+
+east user-auth as "Thunder Auth" identity-server
+
+north -> expense-webapp
+north -> expense-api
+north -> receipt-extraction-agent
+
+expense-webapp -> expense-api
+expense-webapp -> receipt-extraction-agent
+expense-webapp -> user-auth
+
+expense-api -> user-auth
+expense-api -> expense-db
+
+receipt-extraction-agent -> user-auth
+receipt-extraction-agent -> memory-db
