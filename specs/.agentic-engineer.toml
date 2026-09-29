@@ -1,0 +1,4 @@
+apiVersion = "agentic-engineer/v1"
+name = "small-team-expense"
+createdAt = "2026-09-29T08:26:01Z"
+idea = "A small-team expense app. Employees submit an expense with a photo of the receipt; the app should fill in the vendor, date, amount and category from the photo so they don't type them. Managers approve or reject."
