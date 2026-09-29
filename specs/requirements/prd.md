@@ -55,7 +55,7 @@ an agent; the employee reviews and can correct any field before submitting.
 - An expense category is chosen from a fixed list (e.g. Travel, Meals,
 Lodging, Office Supplies, Software, Other) rather than free text.
 - A single currency is used across the app; no multi-currency conversion.
-*assumed*
+
 - A manager's comment is always optional, on either an approval or a
 rejection.
 - Notification of an approval/rejection outcome is in-app only (no email or
