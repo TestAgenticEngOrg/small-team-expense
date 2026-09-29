@@ -7,12 +7,68 @@
   "appPath": "expense-webapp",
   "entrypoint": "deployment/web-application",
   "exposure": "internet",
-  "dependencies": [
-    { "kind": "component", "name": "expense-api", "description": "Submits and lists expenses, and carries manager decisions." },
-    { "kind": "component", "name": "receipt-extraction-agent", "description": "Extracts vendor/date/amount/category from an uploaded receipt photo before submission." },
-    { "kind": "platform-resource", "name": "user-auth", "resourceType": "thunder-app" }
+  "stories": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
   ],
   "description": "The single-page app both Employees and Managers use: an employee uploads a receipt, reviews the agent's extracted fields, and submits the expense and tracks its status; a manager reviews and decides the expenses of the people who report to them. Holds no business logic of its own — every read and write goes through expense-api or the extraction agent.",
-  "stories": [1, 2, 3, 4, 5, 6, 7, 8],
-  "skillsPinned": ["wireframes", "react-webapp", "oxygen-ui-design-system", "thunder-authentication"]
+  "dependencies": [
+    {
+      "kind": "component",
+      "name": "expense-api",
+      "description": "Submits and lists expenses, and carries manager decisions.",
+      "wiring": {
+        "endpoint": {
+          "component": "small-team-expense-expense-api",
+          "name": "http",
+          "visibility": "project",
+          "envBindings": {
+            "address": "EXPENSE_API_URL"
+          }
+        }
+      }
+    },
+    {
+      "kind": "component",
+      "name": "receipt-extraction-agent",
+      "description": "Extracts vendor/date/amount/category from an uploaded receipt photo before submission.",
+      "wiring": {
+        "endpoint": {
+          "component": "small-team-expense-receipt-extraction-agent",
+          "name": "http",
+          "visibility": "project",
+          "envBindings": {
+            "address": "RECEIPT_EXTRACTION_AGENT_URL"
+          }
+        }
+      }
+    },
+    {
+      "kind": "platform-resource",
+      "name": "user-auth",
+      "resourceType": "thunder-app",
+      "wiring": {
+        "ref": "small-team-expens-66039da2",
+        "envBindings": {
+          "client_id": "USER_AUTH_CLIENT_ID",
+          "issuer": "USER_AUTH_ISSUER",
+          "jwks_url": "USER_AUTH_JWKS_URL",
+          "resource": "USER_AUTH_RESOURCE",
+          "scopes": "USER_AUTH_SCOPES"
+        }
+      }
+    }
+  ],
+  "skillsPinned": [
+    "wireframes",
+    "react-webapp",
+    "oxygen-ui-design-system",
+    "thunder-authentication"
+  ]
 }
