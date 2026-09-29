@@ -29,36 +29,37 @@ expenses as an employee — the two roles overlap on the same person.
 ## User Stories
 
 1. As an Employee, I want to submit an expense with a photo of the receipt, so
- that I don't have to type the details myself.
+that I don't have to type the details myself.
 2. As an Employee, I want the app to automatically fill in the vendor, date,
- amount and category from the receipt photo, so that I save time and avoid
- transcription mistakes.
+amount and category from the receipt photo, so that I save time and avoid
+transcription mistakes.
 3. As an Employee, I want to review and correct the auto-filled fields before
- final submission, so that a misread receipt doesn't go through wrong.
+final submission, so that a misread receipt doesn't go through wrong.
 4. As an Employee, I want to see the status of each expense I've submitted
- (pending, approved, rejected), so that I know where it stands.
+(pending, approved, rejected), so that I know where it stands.
 5. As an Employee, I want to be notified when one of my expenses is approved
- or rejected, so that I know the outcome without checking manually.
+or rejected, so that I know the outcome without checking manually.
 6. As a Manager, I want to see a list of expenses awaiting my approval, so
- that I can review them.
+that I can review them.
 7. As a Manager, I want to approve or reject an expense, so that spending is
- controlled.
-8. As a Manager, I want to add a comment when I reject an expense, so that the
- employee knows why.
+controlled.
+8. As a Manager, I want to add an optional comment when I approve or reject
+an expense, so that the employee has context for my decision.
 
 ## Product Decisions
 
 - Sign-in is SSO through Thunder, the platform IDP (organization default).
 - Vendor, date, amount and category are extracted from the receipt photo by
 an agent; the employee reviews and can correct any field before submitting.
-- Each employee has exactly one manager who reviews their expenses. *assumed*
+- Each employee has exactly one manager who reviews their expenses.
 - An expense category is chosen from a fixed list (e.g. Travel, Meals,
-Lodging, Office Supplies, Software, Other) rather than free text. *assumed*
+Lodging, Office Supplies, Software, Other) rather than free text.
 - A single currency is used across the app; no multi-currency conversion.
 *assumed*
-- A rejection requires the manager's comment; an approval does not. *assumed*
+- A manager's comment is always optional, on either an approval or a
+rejection.
 - Notification of an approval/rejection outcome is in-app only (no email or
-push). *assumed*
+push).
 
 ## Out of Scope
 
